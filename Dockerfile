@@ -23,6 +23,8 @@
 
 FROM ubuntu:latest
 
+RUN echo hello
+
 RUN wget https://github.com/felixrieseberg/windows95/releases/download/v2.2.2/windows95_2.2.2_amd64.deb
 
 RUN sudo dpkg -i windows95_2.2.2_amd64.deb
