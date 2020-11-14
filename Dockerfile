@@ -21,29 +21,10 @@
 #       xhost +
 #
 
-FROM node:10.9-stretch
+FROM ubuntu:latest
 
-LABEL maintainer "Paul DeCarlo <toolboc@gmail.com>"
+RUN wget https://github.com/felixrieseberg/windows95/releases/download/v2.2.2/windows95_2.2.2_amd64.deb
 
-RUN apt update && apt install -y \
-    libgtk-3-0 \
-    libcanberra-gtk3-module \
-    libx11-xcb-dev \
-    libgconf2-dev \
-    libnss3 \
-    libasound2 \
-    libxtst-dev \
-    libxss1 \
-    git \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+RUN sudo dpkg -i windows95_2.2.2_amd64.deb
 
-COPY . .
-
-RUN npm install 
-
-RUN chown root node_modules/electron/dist/chrome-sanbox
-
-RUN chmod 4755 node_modules/electron/dist/chrome-sanbox
-
-ENTRYPOINT [ "npm", "start"]
+ENTRYPOINT [ "windows95" ]
