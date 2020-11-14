@@ -40,10 +40,10 @@ RUN apt update && apt install -y \
 
 COPY . .
 
-RUN chown root chrome-sandbox
-
-RUN chmod 4755 node_modules/electron/dist/chrome-sandbox
-
 RUN npm install 
+
+RUN chown root node_modules/electron/dist/chrome-sanbox
+
+RUN chmod 4755 node_modules/electron/dist/chrome-sanbox
 
 ENTRYPOINT [ "npm", "start"]
