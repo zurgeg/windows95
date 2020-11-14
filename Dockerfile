@@ -40,8 +40,10 @@ RUN apt update && apt install -y \
 
 COPY . .
 
-RUN chmod 4755 node_modules/electron/dist/chrome-sandbox
 RUN chown root chrome-sandbox
+
+RUN chmod 4755 node_modules/electron/dist/chrome-sandbox
+
 RUN npm install 
 
 ENTRYPOINT [ "npm", "start"]
